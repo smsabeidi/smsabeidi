@@ -61,8 +61,8 @@ I’m currently looking for Software Engineering, ML and Quant internships to ap
 ## 📊 GitHub Stats  
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=tokyonight&count_private=true" width="47%" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_GITHUB_USERNAME&layout=compact&theme=tokyonight" width="47%" />
+  <img src="https://github-readme-stats.vercel.app/api?username=smsabeidi&show_icons=true&theme=tokyonight&count_private=true" width="47%" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=smsabeidi&layout=compact&theme=tokyonight" width="47%" />
 </p>
 
 ---
