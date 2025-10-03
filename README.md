@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/main/banner.png" alt="Muhammed Salim Banner" width="100%" />
+  <img src="glasses-lie-laptop-reflecting-light-from-screen-dark.jpg" alt="Muhammed Salim Banner" width="100%" />
 </p>
 
 ## Hi, I’m Muhammed Salim
