@@ -68,9 +68,10 @@ I’m currently looking for Software Engineering, ML and Quant internships to ap
 ---
 
 ## How to reach me
+Let's connect
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/muhammed-salim-a92a99341/)
 
 
 ---
 
-⭐️ *"I don’t just code—I build secure systems that matter, systems that leave great positive impact on it's users."*
+*"I don’t just code—I build secure systems that matter, systems that leave great positive impact on it's users."*
