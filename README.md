@@ -1,77 +1,87 @@
-<p align="center">
-  <img src="glasses-lie-laptop-reflecting-light-from-screen-dark.jpg" alt="Muhammed Salim Banner" width="100%" />
-</p>
-
-## Hi, I’m Muhammed Salim
-
-I’m an ML & Software Engineer passionate about building **backend systems, AI-driven platforms, and mission-critical defense technology**.  
-With strong foundations in **algorithms, data, and cloud infrastructure**, I focus on delivering secure, scalable and reliable solutions that create real-world impact.
-
----
-
-## 🧑‍💻 About Me
-I’m a CS & CyberSecurity student and engineer passionate about AI-powered defense systems, quantitative trading pipelines, and intelligent backend platforms. This GitHub showcases my learning journey, hands-on projects, and experiments in cutting-edge tech.
-
-I’m currently looking for Software Engineering, ML and Quant internships to apply my skills, work with great minds, and build impactful solutions.
-
----
-
-## 🌱 I am currently learning
-- Advanced **Machine Learning & Deep Learning Architectures**  
-- **Low-latency backend systems** for trading & defense applications  
-- **Systems Design & Cloud Scaling**
-
----
-
-### Languages  
-<p>
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" />
-  <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white" />
-  <img src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
-</p>
-
-### Frameworks & Tools  
-<p>
-  <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" />
-  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
-  <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" />
-  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
-  <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" />
-</p>
-
-### Cloud & DevOps  
-<p>
-  <img src="https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
-  <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" />
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
-  <img src="https://img.shields.io/badge/CI/CD-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" />
-</p>
-
----
-## 💡 Ask me about …
-- Designing **AI-powered defense systems**  
-- **Quantitative Trading Models** & ML-driven pipelines  
-- Building **scalable backends** with Python & Java  
- 
-
----
-
-## 📊 GitHub Stats  
+<h1 align="center">Muhammed Salim</h1>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=smsabeidi&show_icons=true&theme=tokyonight&count_private=true" width="47%" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=smsabeidi&layout=compact&theme=tokyonight" width="47%" />
+  Backend &amp; AI Engineer &nbsp;•&nbsp; Incoming Computer Science Student @ University of Maryland &nbsp;•&nbsp; Class of 2028
 </p>
 
----
+<p align="center">
+  <a href="https://www.linkedin.com/in/muhammed-salim-a92a99341/">LinkedIn</a>
+  &nbsp;•&nbsp;
+  <a href="https://selmou.com">Selmou AI</a>
+</p>
 
-## How to reach me
-Let's connect
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/muhammed-salim-a92a99341/)
+I build backend systems and AI-enabled products for healthcare, logistics, and data-intensive applications. I care about strong system design, careful testing, and software that solves real operational problems.
 
+Currently, I am building Selmou AI, developing my foundations in distributed and machine-learning systems, and exploring low-latency infrastructure through quantitative research.
 
----
+Selected work
 
-*"I don’t just code—I build secure systems that matter, systems that leave great positive impact on it's users."*
+Selmou AI — Healthcare operations platform
+
+Co-founder and engineer of an AI-native platform that helps care agencies manage documentation, compliance, staff workflows, and client records. The product is currently being shaped with four pilot agencies.
+
+Architected a multi-tenant PostgreSQL backend with RLS, RBAC, append-only records, and hash-chained audit trails.
+
+Added pgTAP tests and CI checks for permissions, audit integrity, and schema changes.
+
+PostgreSQL Supabase TypeScript Row-Level Security pgTAP GitHub Actions
+
+DashDrop — Regional ride and delivery platform
+
+Co-founded a regional ride and delivery product and helped build its customer-facing software and digital infrastructure.
+
+Developed the responsive product experience using Astro and TypeScript.
+
+Created reusable components, automated build tooling, production checks, and the Vercel deployment workflow.
+
+Live project
+
+Astro TypeScript JavaScript Vercel Testing
+
+Quantitative Research & Execution System
+
+Building a cost-aware research and execution framework for testing systematic trading hypotheses.
+
+Implemented walk-forward evaluation, transaction-cost modeling, statistical gates, and risk controls.
+
+Built falsification and synthetic-data checks alongside an MQL5 execution layer, supported by 65 automated tests.
+
+Python MQL5 Pandas SciPy Pytest Quantitative Research
+
+Vertex AI Fact-Checker — 2nd Place, DevFest Hackathon
+
+Built a fact-checking application as a solo competitor and finished second overall. Used Google Vertex AI to analyze claims and return evidence-supported assessments.
+
+Python Vertex AI LLMs Information Retrieval
+
+Technical focus
+
+Languages: Python, Java, C++, TypeScript, SQL
+
+Backend & data: Spring Boot, Node.js, FastAPI, PostgreSQL, Supabase, Redis
+
+Cloud & infrastructure: AWS, Docker, Vercel, GitHub Actions
+
+AI & ML: scikit-learn, TensorFlow, PyTorch, RAG and LLM applications
+
+Beyond the code
+
+Incoming Computer Science student at the University of Maryland, graduating in 2028
+
+Presidential Scholar
+
+Member of ColorStack and the National Society of Black Engineers
+
+Interested in backend engineering, applied AI, and the systems behind reliable products
+
+Contribution activity
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/output/github-contribution-grid-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/output/github-contribution-grid-snake.svg" />
+    <img alt="GitHub contribution snake animation" src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/output/github-contribution-grid-snake.svg" />
+  </picture>
+</p>
+
+I am open to software engineering and applied AI internship opportunities.
