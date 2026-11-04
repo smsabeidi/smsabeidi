@@ -1,5 +1,5 @@
 {
-  "ran_at": "2026-11-04T05:24:14Z",
+  "ran_at": "2026-11-04T05:42:13Z",
   "checks": {
     "hft_tests": {
       "status": "pass",
@@ -33,6 +33,13 @@
       "status": "pass",
       "links": 14,
       "missing": []
+    },
+    "careos_pgtap": {
+      "status": "pass",
+      "files": 43,
+      "tests": 1794,
+      "migrations": 59,
+      "commit": "5304a42"
     }
   },
   "rounds": [

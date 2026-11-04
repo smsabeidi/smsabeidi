@@ -1,10 +1,10 @@
 <!-- Generated. Edit README.template.md and profile.json, then run make. Numbers come from data/verification.json, which only CI writes. -->
 
 <p><a href="https://github.com/smsabeidi/smsabeidi/blob/main/data/verification.json"><picture>
-  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-phone-dark-ddd88fe6.svg">
-  <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-phone-light-5aa0fdc1.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-wide-dark-ddad4d2d.svg">
-  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-wide-light-890b79d8.svg" alt="Muhammed Salim: I build software that can't quietly be wrong. ASCII portrait on green-bar printer paper beside a make verify report measured by CI." width="100%">
+  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-phone-dark-7bb021b9.svg">
+  <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-phone-light-b46b55b3.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-wide-dark-66d71423.svg">
+  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-wide-light-4f4ad79a.svg" alt="Muhammed Salim: I build software that can't quietly be wrong. ASCII portrait on green-bar printer paper beside a make verify report measured by CI." width="100%">
 </picture></a></p>
 
 Every number on that sheet was measured by [a CI job in this repo](https://github.com/smsabeidi/smsabeidi/blob/main/.github/workflows/printout.yml), not typed by me. Each week it clones my public repos, runs their test suites and self-checks, and reprints this page. A failed check prints here in red. Last run: 2026-11-04.
@@ -16,27 +16,27 @@ I'm looking for Summer 2027 internships in software engineering, quant developme
 [**CareOS**](https://github.com/smsabeidi/careOS) is the backend of [Selmou AI](https://selmou.com), the healthcare operations platform I co-founded and am shaping with four pilot agencies. In home care the records are the compliance evidence, so the database treats history as append-only.
 
 <p><a href="https://github.com/smsabeidi/careOS/blob/main/supabase/tests/database/004_audit_chain.sql"><picture>
-  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-phone-dark-e5d676c3.svg">
-  <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-phone-light-139f752d.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-wide-dark-f396efba.svg">
-  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-wide-light-986387c7.svg" alt="Animated audit table. A superuser edits row 43; verify_chain recomputes each SHA-256 hash and reports first_bad_id 43." width="100%">
+  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-phone-dark-75ca902d.svg">
+  <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-phone-light-0ed121cc.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-wide-dark-43849c61.svg">
+  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-wide-light-98a0d986.svg" alt="Animated audit table. A superuser edits row 43; verify_chain recomputes each SHA-256 hash and reports first_bad_id 43." width="100%">
 </picture></a></p>
 
 <sub>Sample rows, real digests. Recompute them from `EVENTS` in [scripts/sheets.py](https://github.com/smsabeidi/smsabeidi/blob/main/scripts/sheets.py) with the formula in the migration.</sub>
 
 - Every consequential action joins a per-tenant SHA-256 chain ([`0003_audit_chain.sql`](https://github.com/smsabeidi/careOS/blob/main/supabase/migrations/0003_audit_chain.sql)). A trigger blocks update and delete, and concurrent writers take an advisory lock so the chain can't fork.
 - The test suite plays the insider. It disables that trigger as superuser, edits one row, and requires `verify_chain` to name that exact row while another tenant's chain still verifies ([`004_audit_chain.sql`](https://github.com/smsabeidi/careOS/blob/main/supabase/tests/database/004_audit_chain.sql)).
-- n/a migrations and n/a pgTAP assertions across n/a suites. Row-level security is forced on every table, and CI fails if the live policies drift from the documented ones ([`gen-policies.sh`](https://github.com/smsabeidi/careOS/blob/main/scripts/gen-policies.sh)).
+- 59 migrations and 1,794 pgTAP assertions across 43 suites. Row-level security is forced on every table, and CI fails if the live policies drift from the documented ones ([`gen-policies.sh`](https://github.com/smsabeidi/careOS/blob/main/scripts/gen-policies.sh)).
 
 ### A research harness that's allowed to say no
 
 [**My quant research system**](https://github.com/smsabeidi/hft) exists to kill my own ideas before they cost money. A backtest that can't lose proves nothing, so the harness has to pass three tests on itself before it judges anything: a [zero-edge strategy must lose after costs](https://github.com/smsabeidi/hft/blob/main/scripts/run_falsification.py), [real strategies must fail on random walks](https://github.com/smsabeidi/hft/blob/main/scripts/run_synthetic_check.py), and [a planted edge must be found](https://github.com/smsabeidi/hft/blob/main/scripts/run_power_check.py).
 
 <p><a href="https://github.com/smsabeidi/hft/blob/main/reports/rounds.log"><picture>
-  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-phone-dark-900dc3a0.svg">
-  <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-phone-light-13d82a10.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-wide-dark-fed4dd53.svg">
-  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-wide-light-fa0e35de.svg" alt="Printed dot plot of out-of-sample t-statistics: 12 of 14 strategy variants rejected. Data: reports/rounds.log." width="100%">
+  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-phone-dark-b3da45c2.svg">
+  <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-phone-light-2497f640.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-wide-dark-8d1d39bf.svg">
+  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-wide-light-df8c1bf6.svg" alt="Printed dot plot of out-of-sample t-statistics: 12 of 14 strategy variants rejected. Data: reports/rounds.log." width="100%">
 </picture></a></p>
 
 - The noise test caught a flaw in my own gate: 51 lucky trades at t = 0.7 used to pass. That's why the gate now has minimum-trade and t-stat floors.
@@ -75,7 +75,12 @@ I also gave a TEDx talk, [Be Realistic: The Beautiful Lie](https://youtu.be/DMJH
 
 Python, Java, C++, TypeScript, SQL. Spring Boot, Node.js, FastAPI, PostgreSQL, Supabase, Redis. AWS, Docker, Vercel, GitHub Actions. scikit-learn, TensorFlow, PyTorch.
 
-
+<p><a href="https://github.com/smsabeidi"><picture>
+  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/contributions-phone-dark-403488cc.svg">
+  <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/contributions-phone-light-590ae859.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/contributions-wide-dark-456a365c.svg">
+  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/contributions-wide-light-fcee66b5.svg" alt="Contribution graph printed as character density: 504 contributions in the last year." width="100%">
+</picture></a></p>
 
 <details>
 <summary>How this page is printed</summary>
