@@ -1,10 +1,10 @@
 <!-- Generated. Edit README.template.md and profile.json, then run make. Numbers come from data/verification.json, which only CI writes. -->
 
 <p><a href="https://github.com/smsabeidi/smsabeidi/blob/main/data/verification.json"><picture>
-  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-phone-dark-d3153096.svg">
-  <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-phone-light-dd7b8ab0.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-wide-dark-ed4bf0be.svg">
-  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-wide-light-45090f81.svg" alt="Muhammed Salim: I build software that can't quietly be wrong. ASCII portrait on green-bar printer paper beside a make verify report measured by CI." width="100%">
+  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-phone-dark-86e1317e.svg">
+  <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-phone-light-2d1a5acf.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-wide-dark-076a70df.svg">
+  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/hero-wide-light-7ce31852.svg" alt="Muhammed Salim: I build software that can't quietly be wrong. ASCII portrait on green-bar printer paper beside a make verify report measured by CI." width="100%">
 </picture></a></p>
 
 Every number on that sheet came from [a CI job in this repo](https://github.com/smsabeidi/smsabeidi/blob/main/.github/workflows/printout.yml), not from me. Each week it clones my public repos, runs their test suites and self-checks, and reprints this page. A failed check prints here in red, and a check that can't run prints as not run. Last run: 2026-11-04.
@@ -16,10 +16,10 @@ I'm looking for Summer 2027 internships in software engineering, quant developme
 [**CareOS**](https://github.com/smsabeidi/careOS) is the backend of [Selmou AI](https://selmou.com), the healthcare operations platform I co-founded and am shaping with four pilot agencies. In home care the records are the compliance evidence, so the database treats history as append-only.
 
 <p><a href="https://github.com/smsabeidi/careOS/blob/main/supabase/tests/database/004_audit_chain.sql"><picture>
-  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-phone-dark-75ca902d.svg">
-  <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-phone-light-0ed121cc.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-wide-dark-43849c61.svg">
-  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-wide-light-98a0d986.svg" alt="Animated audit table. A superuser edits row 43; verify_chain recomputes each SHA-256 hash and reports first_bad_id 43." width="100%">
+  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-phone-dark-6d4ede29.svg">
+  <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-phone-light-40c0d239.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-wide-dark-b91d9692.svg">
+  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/ledger-wide-light-61b54ffa.svg" alt="Animated audit table. A superuser edits row 43; verify_chain recomputes each SHA-256 hash and reports first_bad_id 43." width="100%">
 </picture></a></p>
 
 <sub>Sample rows, real digests. Recompute them from `EVENTS` in [scripts/sheets.py](https://github.com/smsabeidi/smsabeidi/blob/main/scripts/sheets.py) with the formula in the migration.</sub>
@@ -33,10 +33,10 @@ I'm looking for Summer 2027 internships in software engineering, quant developme
 [**My quant research system**](https://github.com/smsabeidi/hft) exists to kill my own ideas before they cost money. A backtest that can't lose proves nothing, so the walk-forward harness has three tests of its own: a [zero-edge strategy must lose after costs](https://github.com/smsabeidi/hft/blob/main/scripts/run_falsification.py), [real strategies must fail on random walks](https://github.com/smsabeidi/hft/blob/main/scripts/run_synthetic_check.py), and [a planted edge must be found](https://github.com/smsabeidi/hft/blob/main/scripts/run_power_check.py).
 
 <p><a href="https://github.com/smsabeidi/hft/blob/main/reports/rounds.log"><picture>
-  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-phone-dark-b3da45c2.svg">
-  <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-phone-light-2497f640.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-wide-dark-8d1d39bf.svg">
-  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-wide-light-df8c1bf6.svg" alt="Printed dot plot of out-of-sample t-statistics: 12 of 14 strategy variants rejected. Data: reports/rounds.log." width="100%">
+  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-phone-dark-0f9c5cd0.svg">
+  <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-phone-light-739b985d.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-wide-dark-e94d16c7.svg">
+  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/gauntlet-wide-light-78c9c1ef.svg" alt="Printed dot plot of out-of-sample t-statistics: 12 of 14 strategy variants rejected. Data: reports/rounds.log." width="100%">
 </picture></a></p>
 
 - The noise test caught a flaw in my own gate: 51 lucky trades at t = 0.7 used to pass. That's why the gate now has minimum-trade and t-stat floors.
@@ -75,10 +75,10 @@ I also gave a TEDx talk, [Be Realistic: The Beautiful Lie](https://youtu.be/DMJH
 Python, Java, C++, TypeScript, SQL. Spring Boot, Node.js, FastAPI, PostgreSQL, Supabase, Redis. AWS, Docker, Vercel, GitHub Actions. scikit-learn, TensorFlow, PyTorch.
 
 <p><a href="https://github.com/smsabeidi"><picture>
-  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/contributions-phone-dark-403488cc.svg">
-  <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/contributions-phone-light-590ae859.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/contributions-wide-dark-456a365c.svg">
-  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/contributions-wide-light-fcee66b5.svg" alt="Contribution graph printed as character density: 504 contributions in the last year." width="100%">
+  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/contributions-phone-dark-7292ef91.svg">
+  <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/contributions-phone-light-51aa4d01.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/contributions-wide-dark-cd50bc84.svg">
+  <img src="https://raw.githubusercontent.com/smsabeidi/smsabeidi/printout/assets/contributions-wide-light-7a0951c8.svg" alt="Contribution graph printed as character density: 505 contributions in the last year." width="100%">
 </picture></a></p>
 
 <details>
