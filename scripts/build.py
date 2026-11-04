@@ -8,7 +8,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
+import subprocess
 from pathlib import Path
 
 import sheets
@@ -23,15 +25,20 @@ def load(name: str) -> dict | None:
     return json.loads(path.read_text()) if path.exists() else None
 
 
-def picture(files: dict[str, str], alt: str, href: str) -> str:
-    """Theme- and width-aware image. The link makes each sheet open its evidence."""
+def picture(files: dict[str, str], alt: str, href: str, base: str) -> str:
+    """Theme- and width-aware image, opening the sheet's evidence when clicked.
+
+    The <p> keeps this one HTML block; left bare, Markdown splits the <picture> apart.
+    Raw URLs because the profile page lives at github.com/<user>, where a relative
+    srcset would resolve against the wrong path.
+    """
     return (
-        f'<a href="{href}"><picture>\n'
-        f'  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="./assets/{files["phone-dark"]}">\n'
-        f'  <source media="(max-width: 767px)" srcset="./assets/{files["phone-light"]}">\n'
-        f'  <source media="(prefers-color-scheme: dark)" srcset="./assets/{files["wide-dark"]}">\n'
-        f'  <img src="./assets/{files["wide-light"]}" alt="{alt}" width="100%">\n'
-        "</picture></a>"
+        f'<p><a href="{href}"><picture>\n'
+        f'  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="{base}/{files["phone-dark"]}">\n'
+        f'  <source media="(max-width: 767px)" srcset="{base}/{files["phone-light"]}">\n'
+        f'  <source media="(prefers-color-scheme: dark)" srcset="{base}/{files["wide-dark"]}">\n'
+        f'  <img src="{base}/{files["wide-light"]}" alt="{alt}" width="100%">\n'
+        "</picture></a></p>"
     )
 
 
@@ -97,7 +104,11 @@ def main() -> None:
             f"https://github.com/{user}",
         )
 
-    blocks = {name: picture(write_sheet(name, render), alt, href) for name, (render, alt, href) in pages.items()}
+    branch = os.environ.get("GITHUB_REF_NAME") or subprocess.run(
+        ("git", "branch", "--show-current"), cwd=ROOT, capture_output=True, text=True
+    ).stdout.strip()
+    base = f"https://raw.githubusercontent.com/{user}/{user}/{branch or 'main'}/assets"
+    blocks = {name: picture(write_sheet(name, render), alt, href, base) for name, (render, alt, href) in pages.items()}
 
     context = {**verification, "summary": summary, "profile": profile}
 

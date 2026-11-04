@@ -31,7 +31,7 @@ I'm looking for Summer 2027 internships in software engineering, quant developme
 
 ### An AI that refuses before it guesses
 
-[**VisionAid**](https://github.com/smsabeidi/vision-aid) describes scenes and reads text aloud for blind and low-vision people, where a fluent wrong answer can hurt someone. So the failure path is the design.
+[**VisionAid**](https://github.com/smsabeidi/vision-aid) describes scenes and reads text aloud for blind and low-vision people, where a fluent wrong answer can hurt someone. So it fails closed.
 
 - With no provider credential, live analysis returns a typed error and never a sample result ([test](https://github.com/smsabeidi/vision-aid/blob/main/tests/api-route.test.ts)).
 - Model output that fails the strict schema is rejected ([test](https://github.com/smsabeidi/vision-aid/blob/main/tests/model-analysis.test.ts)).

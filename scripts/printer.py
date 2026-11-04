@@ -20,8 +20,8 @@ HOLE_PITCH = LINE * 2
 # Plain continuous stationery. Both themes keep a real sheet of paper, because
 # paper doesn't turn black at night. The dark one only dims it so it doesn't glare.
 THEMES = {
-    "light": {"paper": "#fbfdfa", "bar": "#dcefe0", "edge": "#b9cdbe", "preprint": "#7fae8c", "ink": "#1c2733", "red": "#c2201a"},
-    "dark": {"paper": "#e8ede6", "bar": "#cbe2d1", "edge": "#9fb8a6", "preprint": "#6f9c7c", "ink": "#1c2733", "red": "#b51c16"},
+    "light": {"paper": "#fbfdfa", "bar": "#dcefe0", "edge": "#b9cdbe", "preprint": "#3f6e50", "track": "#8fbb9c", "ink": "#1c2733", "red": "#c2201a"},
+    "dark": {"paper": "#e8ede6", "bar": "#cbe2d1", "edge": "#9fb8a6", "preprint": "#38644a", "track": "#86b094", "ink": "#1c2733", "red": "#b51c16"},
 }
 
 # 5x7 dot-matrix capitals for the banner page that opens every print job.
@@ -97,7 +97,7 @@ def base_css(theme: dict) -> str:
     return (
         font_face()
         + f"text{{font-family:Plex,ui-monospace,Menlo,Consolas,monospace;fill:{theme['ink']};white-space:pre}}"
-        + f".red{{fill:{theme['red']}}}.strong{{font-weight:600}}.pre{{fill:{theme['preprint']}}}"
+        + f".red{{fill:{theme['red']}}}.strong{{font-weight:600}}.pre{{fill:{theme['preprint']}}}.track{{fill:{theme['track']}}}"
     )
 
 

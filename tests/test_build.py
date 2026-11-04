@@ -84,13 +84,13 @@ class LedgerSheet(unittest.TestCase):
 
 class DotPlot(unittest.TestCase):
     def test_marks_zero_and_the_gate(self):
-        track, marks = sheets.plot_row(None, 53, -8, 18)
+        track, gate, marks = sheets.plot_row(None, 53, -8, 18)
         self.assertEqual(track.index(":"), 16)
-        self.assertEqual(track.index("|"), 20)
+        self.assertEqual(gate.index("|"), 20)
         self.assertEqual(marks, "")
 
     def test_off_scale_values_point_left(self):
-        track, marks = sheets.plot_row(-33.2, 53, -8, 18)
+        marks = sheets.plot_row(-33.2, 53, -8, 18)[2]
         self.assertEqual(marks[0], "<")
 
 
@@ -123,10 +123,16 @@ class Assets(unittest.TestCase):
 
     def test_readme_images_exist(self):
         readme = (ROOT / "README.md").read_text()
-        names = re.findall(r"\./assets/([\w-]+\.svg)", readme)
+        names = re.findall(r"/assets/([\w-]+\.svg)", readme)
         self.assertGreaterEqual(len(names), 12)
         for name in names:
             self.assertTrue((ROOT / "assets" / name).exists(), name)
+
+    def test_each_picture_stays_one_html_block(self):
+        readme = (ROOT / "README.md").read_text()
+        for block in re.findall(r"<p><a href=.*?</picture></a></p>", readme, re.S):
+            self.assertNotIn("\n\n", block)
+        self.assertEqual(readme.count("<picture>"), len(re.findall(r"<p><a href=[^>]+><picture>", readme)))
 
     def test_the_source_photo_stays_out(self):
         tracked = [p for p in ROOT.rglob("*") if p.suffix.lower() in {".jpg", ".jpeg", ".png", ".heic"} and ".git" not in p.parts]

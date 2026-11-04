@@ -63,6 +63,7 @@ jobs:
           name: verification
           path: data
       - run: python scripts/contributions.py
+        continue-on-error: true # keep yesterday's calendar if GitHub's markup changes
       - run: python scripts/build.py
       - run: python -m unittest discover -s tests
       - name: Publish

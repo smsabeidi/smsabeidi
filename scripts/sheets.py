@@ -224,7 +224,6 @@ def ledger(wide: bool, theme: dict, verification: dict) -> str:
     body += [text(at(name), baseline(head), names[name], "t strong") for name in columns]
     css = timed("note", 7)
 
-    sweep = {}  # row index -> animation class, so the walk reveals one row at a time
     for i, row in enumerate(rows):
         y = baseline(head + 1 + i)
         body.append(text(at("id"), y, str(row["id"]), "t"))
@@ -237,9 +236,8 @@ def ledger(wide: bool, theme: dict, verification: dict) -> str:
         else:
             body.append(text(at("payload"), y, row["payload"], "t"))
         body.append(text(at("hash"), y, hex8(row["hash"]), "t"))
-        if i <= tampered:
+        if i <= tampered:  # verify_chain stops at the first bad row, so later rows stay blank
             name = f"w{i}"
-            sweep[i] = name
             css += timed(name, 32 + i * 9)
             again = recomputed if i == tampered else row["hash"]
             verdict, cls = ("FAIL", "t red strong") if i == tampered else ("ok", "t")
@@ -257,7 +255,6 @@ def ledger(wide: bool, theme: dict, verification: dict) -> str:
     css += "@keyframes was{0%,13.9%{opacity:1}14%,100%{opacity:0}}.was{animation:was 15s infinite;opacity:0}"
     css += "@keyframes now{0%,13.9%{opacity:0}14%,99%{opacity:1}99.1%,100%{opacity:0}}.now{animation:now 15s infinite}"
     height = (query + 6) * LINE
-    height = (height // BAR + (1 if height % BAR else 0)) * BAR
     style = base_css(theme) + TYPE_CSS + f".t{{font-size:{12.2 if wide else 11.1}px}}" + css + CALM
     title = "Hash-chained audit ledger catches an insider edit"
     desc = (
@@ -271,28 +268,25 @@ def plot_axis(cols: int, low: float, high: float, labels: tuple[int, ...]) -> st
     axis = [" "] * cols
     for value in labels:
         tag = f"{value:+d}" if value else "0"
-        spot = round((value - low) / (high - low) * (cols - 1)) - len(tag) // 2
+        spot = max(0, round((value - low) / (high - low) * (cols - 1)) - len(tag) // 2)
         for offset, ch in enumerate(tag):
             if 0 <= spot + offset < cols:
                 axis[spot + offset] = ch
     return "".join(axis)
 
 
-def plot_row(t: float | None, cols: int, low: float, high: float) -> tuple[str, str]:
-    """A line-printer dot plot: '.' for the track, ':' at zero, '|' at the t = 2 gate."""
-    track = ["."] * cols
-    track[round((0 - low) / (high - low) * (cols - 1))] = ":"
-    track[round((2 - low) / (high - low) * (cols - 1))] = "|"
-    if t is None:
-        return "".join(track), ""
-    if t < low:
-        mark, spot = "<", 0
-    else:
-        mark, spot = "#", round((min(t, high) - low) / (high - low) * (cols - 1))
-    marks = [" "] * cols
-    track[spot] = " "
-    marks[spot] = mark
-    return "".join(track), "".join(marks).rstrip()
+def plot_row(t: float | None, cols: int, low: float, high: float) -> tuple[str, str, str]:
+    """A line-printer dot plot, one string per ink: the track, the t = 2 gate, the mark."""
+    place = lambda value: round((value - low) / (high - low) * (cols - 1))  # noqa: E731
+    track, gate, marks = ["."] * cols, [" "] * cols, [" "] * cols
+    track[place(0)] = ":"
+    track[place(2)] = " "
+    gate[place(2)] = "|"
+    if t is not None:
+        spot = 0 if t < low else place(min(t, high))
+        track[spot], gate[spot] = " ", " "
+        marks[spot] = "<" if t < low else "#"
+    return "".join(track), "".join(gate).rstrip(), "".join(marks).rstrip()
 
 
 def verdict_of(result: str) -> str:
@@ -312,10 +306,10 @@ def gauntlet(wide: bool, theme: dict, verification: dict) -> str:
     low, high = (-8.0, 18.0)
 
     def row(y: int, name: str, t: float | None, stability: float | None, verdict: str, red: bool) -> str:
-        track, marks = plot_row(t, cols, low, high)
+        track, gate, marks = plot_row(t, cols, low, high)
         cls = "t red" if red else "t"
         y_px = baseline(y)
-        out = [text(left, y_px, name[: name_cols - 1], cls), text(plot_x, y_px, track, "t pre")]
+        out = [text(left, y_px, name[: name_cols - 1], cls), text(plot_x, y_px, track, "t track"), text(plot_x, y_px, gate, "t")]
         if marks:
             out.append(text(plot_x, y_px, marks, "t strong red" if red else "t strong"))
         if wide:
@@ -349,8 +343,7 @@ def gauntlet(wide: bool, theme: dict, verification: dict) -> str:
     for line in rule:
         body.append(text(left, baseline(y), line, "t"))
         y += 1
-    height = (y + 2) * LINE
-    height = (height // BAR + (1 if height % BAR else 0)) * BAR
+    height = (y + 1) * LINE
     style = base_css(theme) + TYPE_CSS + f".t{{font-size:{size}px}}"
     killed = sum(1 for r in rounds if r["result"].startswith("FAIL"))
     title = f"Research gauntlet: {killed} of {len(rounds)} strategies rejected"
@@ -387,7 +380,7 @@ def contributions(wide: bool, theme: dict, verification: dict, data: dict) -> st
             rows[day["level"]][row][column] = LEVELS[day["level"]]
     top = baseline(4)
     for level, grid in rows.items():
-        cls = "pre" if level == 0 else "heavy" if level >= 3 else ""
+        cls = "track" if level == 0 else "heavy" if level >= 3 else ""
         cells = "".join(
             f'<text x="{left + column * pitch:.1f}" y="{top + row * line}">{grid[row][column]}</text>'
             for row in range(7)
@@ -400,6 +393,6 @@ def contributions(wide: bool, theme: dict, verification: dict, data: dict) -> st
     body.append(text(left, y, total if wide else f'{grouped(data["total"])} contributions in the last year.', "t strong"))
     if wide:
         body.append(text(right, y, "less . : + # @ more", "s pre end"))
-    height = ((y + 22) // BAR + 1) * BAR
-    style = base_css(theme) + TYPE_CSS + ".t{font-size:12.2px}.grid text{font-size:13px}.grid.heavy text{font-weight:600}.grid.pre text{fill:" + theme["preprint"] + "}"
+    height = y + 22
+    style = base_css(theme) + TYPE_CSS + ".t{font-size:12.2px}.grid text{font-size:13px}.grid.heavy text{font-weight:600}.grid.track text{fill:" + theme["track"] + "}"
     return document(width, height, style, paper(width, height, theme, margin) + "".join(body), "Contribution graph", f'{data["total"]} contributions in the last year, printed as a density grid.')
