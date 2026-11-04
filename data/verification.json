@@ -1,0 +1,138 @@
+{
+  "ran_at": "2026-11-04T05:24:14Z",
+  "checks": {
+    "hft_tests": {
+      "status": "pass",
+      "tests": 153,
+      "failed": 0,
+      "commit": "82c140b"
+    },
+    "hft_falsification": {
+      "status": "pass",
+      "t": -5.65
+    },
+    "hft_noise": {
+      "status": "pass"
+    },
+    "hft_power": {
+      "status": "pass",
+      "t": 16.7
+    },
+    "visionaid_tests": {
+      "status": "pass",
+      "tests": 60,
+      "failed": 0,
+      "commit": "b68841c"
+    },
+    "mslc_tests": {
+      "status": "pass",
+      "tests": 47,
+      "commit": "b73f9a5"
+    },
+    "evidence_links": {
+      "status": "pass",
+      "links": 14,
+      "missing": []
+    }
+  },
+  "rounds": [
+    {
+      "family": "session_breakout",
+      "date": "2026-07-07",
+      "t": -2.2,
+      "stability": 0.29,
+      "result": "FAIL"
+    },
+    {
+      "family": "mean_reversion",
+      "date": "2026-07-07",
+      "t": -3.69,
+      "stability": 0.0,
+      "result": "FAIL"
+    },
+    {
+      "family": "tsmom_pooled",
+      "date": "2026-07-07",
+      "t": -4.48,
+      "stability": 0.14,
+      "result": "FAIL"
+    },
+    {
+      "family": "funding_capture_pooled",
+      "date": "2026-07-07",
+      "t": 3.5,
+      "stability": 1.0,
+      "result": "PASS"
+    },
+    {
+      "family": "funding_capture_m15_kraken",
+      "date": "2026-07-07",
+      "t": null,
+      "stability": null,
+      "result": "PASS-provisional"
+    },
+    {
+      "family": "funding_capture_ar1_retune",
+      "date": "2026-07-07",
+      "t": 3.04,
+      "stability": 1.0,
+      "result": "FAIL"
+    },
+    {
+      "family": "funding_capture_altsyms",
+      "date": "2026-07-07",
+      "t": 2.15,
+      "stability": 0.62,
+      "result": "FAIL"
+    },
+    {
+      "family": "funding_timing_micro",
+      "date": "2026-07-07",
+      "t": 0.0,
+      "stability": null,
+      "result": "FAIL"
+    },
+    {
+      "family": "fx_carry_vol_filtered",
+      "date": "2026-07-07",
+      "t": -0.59,
+      "stability": 0.19,
+      "result": "FAIL"
+    },
+    {
+      "family": "fvg_retest_1to3",
+      "date": "2026-07-07",
+      "t": 2.7,
+      "stability": 0.39,
+      "result": "FAIL"
+    },
+    {
+      "family": "fvg_retest_r2_gold_btc",
+      "date": "2026-07-07",
+      "t": -33.21,
+      "stability": 0.25,
+      "result": "FAIL-family-dead"
+    },
+    {
+      "family": "fx_carry_xs_r2",
+      "date": "2026-07-08",
+      "t": 0.54,
+      "stability": 0.71,
+      "result": "FAIL-family-dead"
+    },
+    {
+      "family": "us_open_orb_indices",
+      "date": "2026-07-09",
+      "t": -0.43,
+      "stability": 0.3,
+      "result": "FAIL"
+    },
+    {
+      "family": "us_open_orb_vol_conditioned",
+      "date": "2026-07-10",
+      "t": -0.13,
+      "stability": 0.55,
+      "result": "FAIL-family-dead"
+    }
+  ]
+}

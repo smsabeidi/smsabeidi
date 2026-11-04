@@ -1,0 +1,76 @@
+name: printout
+
+on:
+  schedule:
+    - cron: "17 6 * * *" # daily: refresh the contribution sheet
+    - cron: "37 7 * * 1" # Mondays: rerun every check
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/**"
+      - "tests/**"
+      - "profile.json"
+      - "README.template.md"
+      - ".github/workflows/printout.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: printout
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    # Runs other repositories' code, so it holds a read-only token and publishes nothing.
+    if: github.event.schedule != '17 6 * * *'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - run: pip install -r scripts/requirements-verify.txt
+      - run: python scripts/verify.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: verification
+          path: data/verification.json
+
+  print:
+    # The only job that can write, and it runs nothing but this repository's scripts.
+    needs: verify
+    if: ${{ !cancelled() && needs.verify.result != 'failure' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        if: needs.verify.result == 'success'
+        with:
+          name: verification
+          path: data
+      - run: python scripts/contributions.py
+      - run: python scripts/build.py
+      - run: python -m unittest discover -s tests
+      - name: Publish
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md assets data
+          git diff --cached --quiet && exit 0
+          git commit -m "print job $(date -u +%y%j) [skip ci]"
+          git pull --rebase
+          git push
