@@ -185,10 +185,8 @@ def main() -> None:
                 continue
             result = check(repos[name])
             print(f"{key}: {result}", flush=True)
-            if result["status"] in ("pass", "fail"):
-                checks[key] = result
-            elif key not in checks:
-                checks[key] = result  # a first run with nothing better to keep
+            # A check that couldn't run keeps its old numbers for the record but loses its pass.
+            checks[key] = result if result["status"] in ("pass", "fail") else {**checks.get(key, {}), **result}
 
     checks["evidence_links"] = {"status": "fail" if missing else "pass", "links": sum(len(v) for v in EVIDENCE.values()), "missing": missing}
     report = {"ran_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "checks": checks, "rounds": rounds}

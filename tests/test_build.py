@@ -51,12 +51,12 @@ class Honesty(unittest.TestCase):
         self.assertIn("8 checks ran. 1 failed.", svg)
         self.assertNotIn("+16.70", svg)
 
-    def test_a_check_that_never_ran_is_not_counted(self):
+    def test_a_check_that_could_not_run_loses_its_pass(self):
         partial = copy.deepcopy(MEASURED)
-        partial["checks"]["careos_pgtap"] = {"status": "error", "why": "docker"}
+        partial["checks"]["careos_pgtap"]["status"] = "error"
         svg = hero(partial)
-        self.assertIn(">pending<", svg)
-        self.assertIn("7 checks ran. 0 failed.", svg)
+        self.assertIn(">not run<", svg)
+        self.assertIn("7 checks ran. 0 failed. 1 did not run.", svg)
 
     def test_killed_count_comes_from_the_log(self):
         self.assertIn(">2 of 4<", hero(MEASURED))
@@ -65,7 +65,7 @@ class Honesty(unittest.TestCase):
         readme = (ROOT / "README.md").read_text()
         self.assertNotIn("{{", readme)
         self.assertNotIn("n/a", readme)
-        self.assertNotIn("pending", (ROOT / "assets" / re.search(r"hero-wide-light-\w+\.svg", readme)[0]).read_text())
+        self.assertNotIn("not run", (ROOT / "assets" / re.search(r"hero-wide-light-\w+\.svg", readme)[0]).read_text())
 
 
 class LedgerSheet(unittest.TestCase):

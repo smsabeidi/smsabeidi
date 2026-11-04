@@ -51,7 +51,7 @@ def report_lines(verification: dict) -> list[tuple[str, str, str, bool]]:
         check = checks.get(key, {"status": "skipped"})
         if check["status"] == "fail":
             return "FAILED", True
-        return (render(check), False) if check["status"] == "pass" else ("pending", False)
+        return (render(check), False) if check["status"] == "pass" else ("not run", False)
 
     tests = lambda check: f"{grouped(check['tests'])} ok"  # noqa: E731
     t_stat = lambda check: f"t = {check['t']:+.2f}"  # noqa: E731
@@ -59,7 +59,7 @@ def report_lines(verification: dict) -> list[tuple[str, str, str, bool]]:
         ("careos", "compliance suite, insider test", *measured("careos_pgtap", tests)),
         ("hft", "zero-edge strategy loses", *measured("hft_falsification", t_stat)),
         ("hft", "planted edge is found", *measured("hft_power", t_stat)),
-        ("hft", "my strategies it has killed", f"{killed} of {len(rounds)}", True),
+        ("hft", "my strategies it rejected", f"{killed} of {len(rounds)}", True),
         ("visionaid", "fail-closed AI boundary", *measured("visionaid_tests", tests)),
     ]
 
@@ -92,7 +92,8 @@ def portrait_layers(portrait: dict, x: float, y: float, advance: float, line: fl
 def hero(wide: bool, theme: dict, profile: dict, verification: dict, portrait: dict) -> str:
     lines = report_lines(verification)
     failed = checks_failed(verification)
-    summary = f"{checks_ran(verification)} checks ran. {failed} failed."
+    skipped = len(verification["checks"]) - checks_ran(verification)
+    summary = f"{checks_ran(verification)} checks ran. {failed} failed." + (f" {skipped} did not run." if skipped else "")
     job = job_of(verification)
     title = f'{profile["name"]}: {profile["thesis"]}'
     desc = (
